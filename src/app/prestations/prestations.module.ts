@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { PagePrestationsComponent } from './Pages/page-prestations/page-prestations.component';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [PagePrestationsComponent],
   imports: [
     CommonModule
   ]
