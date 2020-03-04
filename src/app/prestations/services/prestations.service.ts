@@ -4,12 +4,12 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Prestation } from 'src/app/shared/models/prestation';
+import { State } from 'src/app/shared/enums/state.enum';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PrestationsService {
-
   private pCollection$: Observable<Prestation[]>;
 
   constructor(private http: HttpClient) {
@@ -36,6 +36,15 @@ export class PrestationsService {
   // Add item in collection
 
   // Update item in collection
+  updateState(prestation: Prestation, state: State) {
+    let presta = new Prestation(prestation);
+    presta.state = state;
+    return this.updatePrestation(presta);
+  }
+
+  updatePrestation(prestation: Prestation) {
+    return this.http.patch(`${environment.urlApi}prestations/${prestation.id}`, prestation);
+  }
 
   // Delete item in collection
 
