@@ -36,14 +36,14 @@ export class PrestationsService {
   // Add item in collection
 
   // Update item in collection
-  updateState(prestation: Prestation, state: State) {
+  updateState(prestation: Prestation, state: State): Observable<Prestation> {
     let presta = new Prestation(prestation);
     presta.state = state;
     return this.updatePrestation(presta);
   }
 
-  updatePrestation(prestation: Prestation) {
-    return this.http.patch(`${environment.urlApi}prestations/${prestation.id}`, prestation);
+  updatePrestation(prestation: Prestation): Observable<Prestation> {
+    return this.http.patch<Prestation>(`${environment.urlApi}prestations/${prestation.id}`, prestation);
   }
 
   // Delete item in collection
