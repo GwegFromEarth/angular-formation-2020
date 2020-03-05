@@ -1,8 +1,9 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PrestationsService } from '../../services/prestations.service';
 import { Prestation } from 'src/app/shared/models/prestation';
 import { Observable } from 'rxjs';
 import { State } from 'src/app/shared/enums/state.enum';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-page-prestations',
@@ -20,16 +21,18 @@ export class PagePrestationsComponent implements OnInit {
   public route: string;
   public externalLink: string;
 
-  constructor(private ps: PrestationsService) { }
+  constructor(private ps: PrestationsService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.headers = ["Type", "Client", "NbJours", "TjmHt", "Total HT", "Total TTC", "State"];
     this.collection$ = this.ps.collection;
-    this.title = "Prestations";
-    this.subtitle = "Toutes les prestations";
+    this.activatedRoute.data.subscribe((datas) => {
+      this.title = datas.title;
+      this.subtitle = datas.subtitle;
+    })
     this.label = "Ajouter une prestation";
     this.route = "add";
     this.externalLink = "https://www.google.fr/";
+    this.headers = ["Type", "Client", "NbJours", "TjmHt", "Total HT", "Total TTC", "State"];
   }
 
   public changeState(item, event) {
