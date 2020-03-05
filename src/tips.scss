@@ -1,0 +1,99 @@
+// ********************* Ajouter dans page-prestations.component.html ***********************
+<div>
+  <h1>Un joli titre</h1>
+  <p class="orange" id="pink" style="background: blue;">un petit paragraphe</p>
+  <p>un petit paragraphe</p>
+</div>
+
+// ********************* Ajouter dans styles.scss ***********************
+// Sélecteur simple
+p {
+  background: red;
+}
+// p {
+//   background: blue;
+// }
+
+// Sélecteur de classe
+.orange {
+  background: orange;
+}
+// p.orange {
+//   background: blue;
+// }
+
+// Sélecteur d'attribut
+[class="orange"] {
+  background: purple;
+}
+
+// Pseudo sélecteur
+div p:nth-child(3) {
+  background: green;
+}
+
+// Sélecteur d'ID
+#pink {
+  background: pink;
+}
+
+// Sélecteur de classe et d'ID
+.orange#pink {
+  background: orange;
+}
+
+p {
+  background: black !important;
+}
+
+// Donc les poids du plus fort au moins fort
+// selecteur    |  !important  |   style=   |    id    | pseudo, class, attribut  | simple
+// p {}         |      0       |     0      |     0    |             0            |   1
+// .orange {}   |      0       |     0      |     0    |             1            |   0
+// a:hover      |      0       |     0      |     0    |             1            |   1
+// #green {}    |      0       |     0      |     1    |             0            |   0
+// style=       |      0       |     1      |     0    |             0            |   0
+// !important   |      1       |     0      |     0    |             0            |   0
+// div p #green |      0       |     0      |     1    |             0            |   2
+
+
+// *************************** Bonnes pratiques ****************************
+
+// Header
+.htitle {}
+.hsubtitle {}
+.hlinks {}
+
+// Main
+.htitle {}
+.hsubtitle {}
+.hlinks {}
+
+// Footer
+.htitle {}
+.hsubtitle {}
+.hlinks {}
+
+// => ici on fait 90 points mais illisible
+
+body>header h1 {}
+body>header h2 {}
+body>header a {}
+
+main h1 {}
+main h2 {}
+main a {}
+
+body>footer h1 {}
+body>footer h2 {}
+body>footer a {}
+
+// => ici on fait 24 points
+
+// donc mettre plutot des classes dans les sections
+.bandeau h1 {}
+
+.slider h2 {}
+
+
+// On ne peut pas faire autrement que de mettre !important si dans le framework le CSS contient un !important
