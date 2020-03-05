@@ -13,3 +13,12 @@
     background-color: $color-success;
   }
 }
+
+// Seulement possible car on a retiré le shadowDOM
+app-template-a #table-light .state-option {
+  background: $color2;
+}
+
+app-template-b #table-light .state-option {
+  background: $color1;
+}

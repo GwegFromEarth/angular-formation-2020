@@ -14,18 +14,16 @@ export class PagePrestationsComponent implements OnInit {
   public collection$: Observable<Prestation[]>;
   public headers: string[];
   public states = Object.values(State);
+  public title: string;
+  public subtitle: string;
 
   constructor(private ps: PrestationsService) { }
 
   ngOnInit(): void {
     this.headers = ["Type", "Client", "NbJours", "TjmHt", "Total HT", "Total TTC", "State"];
     this.collection$ = this.ps.collection;
-    // this.ps.collection.subscribe(
-    //   (datas) => {
-    //     console.log(datas)
-    //     this.collection = datas;
-    //   }
-    // );
+    this.title = "Prestations";
+    this.subtitle = "Toutes les prestations";
   }
 
   public changeState(item, event) {

@@ -2,7 +2,7 @@
 
 #table-dark {
   .state-option {
-    background-color: $color2;
+    background-color: $color3;
   }
 
   .state-annule {
@@ -12,4 +12,13 @@
   .state-confirme {
     background-color: $color-success;
   }
+}
+
+// Seulement possible car on a retiré le shadowDOM
+app-template-a #table-dark .state-option {
+  background: $color2;
+}
+
+app-template-b #table-dark .state-option {
+  background: $color1;
 }
