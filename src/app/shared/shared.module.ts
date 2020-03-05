@@ -7,12 +7,13 @@ import { TableauDarkComponent } from './components/tableau-dark/tableau-dark.com
 import { TemplatesModule } from '../templates/templates.module';
 import { ButtonComponent } from './components/button/button.component';
 import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [TotalPipe, StateDirective, TableauLightComponent, TableauDarkComponent, ButtonComponent],
-  exports: [TotalPipe, StateDirective, TableauLightComponent, TableauDarkComponent, TemplatesModule, ButtonComponent],
+  exports: [TotalPipe, StateDirective, TableauLightComponent, TableauDarkComponent, TemplatesModule, ButtonComponent, ReactiveFormsModule],
   imports: [
-    CommonModule, TemplatesModule, RouterModule
+    CommonModule, TemplatesModule, RouterModule, ReactiveFormsModule
   ]
 })
 export class SharedModule { }
