@@ -1,0 +1,33 @@
+@import 'theme';
+@import 'fonts';
+
+a {
+  margin-left: 10px;
+  color: $light-color;
+  display: inline-block;
+  padding: 1em;
+  font-size: $regular-fz;
+  background: lighten($color3, 15); // Teinte 15% plus claire que $color3
+  transition: all .5s;// Transition entre les 2 états
+  &:hover {
+    text-decoration: none;
+    background: $color3;
+  }
+
+  // host-context(...) -> Ne fonctionne que si le shadowDOM est actif
+  :host-context(app-template-a) a {
+    background: lighten($color2, 10); // Teinte 15% plus claire que $color3
+    transition: all .5s;// Transition entre les 2 états
+    &:hover {
+      background: $color2;
+    }
+  }
+
+  :host-context(app-template-b) a {
+    background: lighten($color1, 10); // Teinte 15% plus claire que $color3
+    transition: all .5s;// Transition entre les 2 états
+    &:hover {
+      background: $color1;
+    }
+  }
+}

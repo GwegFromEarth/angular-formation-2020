@@ -16,6 +16,9 @@ export class PagePrestationsComponent implements OnInit {
   public states = Object.values(State);
   public title: string;
   public subtitle: string;
+  public label: string;
+  public route: string;
+  public externalLink: string;
 
   constructor(private ps: PrestationsService) { }
 
@@ -24,6 +27,9 @@ export class PagePrestationsComponent implements OnInit {
     this.collection$ = this.ps.collection;
     this.title = "Prestations";
     this.subtitle = "Toutes les prestations";
+    this.label = "Ajouter une prestation";
+    this.route = "add";
+    this.externalLink = "https://www.google.fr/";
   }
 
   public changeState(item, event) {
