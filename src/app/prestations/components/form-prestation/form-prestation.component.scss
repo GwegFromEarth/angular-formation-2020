@@ -1,0 +1,22 @@
+@import 'theme';
+
+form .ng-invalid.ng-touched {
+  border: 2px solid $color-error;
+}
+
+form .ng-valid.ng-touched {
+  border: 2px solid $color-success;
+}
+
+.btn-primary {
+  border: none;
+  background: $color3;
+}
+
+:host-context(app-template-a) .btn-primary {
+  background: $color2;
+}
+
+:host-context(app-template-b) .btn-primary {
+  background: $color1;
+}

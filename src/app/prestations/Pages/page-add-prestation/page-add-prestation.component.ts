@@ -9,18 +9,26 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class PageAddPrestationComponent implements OnInit {
 
+  public title: string;
+  public subtitle: string;
+
   constructor(
     private ps: PrestationsService,
     private router: Router
-    // , private ar: ActivatedRoute // Pour rediriger en relatif
+    , private activatedRoute: ActivatedRoute // Pour rediriger en relatif
     ) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.activatedRoute.data.subscribe((datas) => {
+      this.title = datas.title;
+      this.subtitle = datas.subtitle;
+    })
+  }
 
   public addItem(item: any) {
     this.ps.addPrestation(item).subscribe((res) => {
       this.router.navigate(['prestations']);
-      // this.router.navigate(['../'], {relativeTo: this.ar}); // Pour passer de .../prestations/add à .../prestations
+      // this.router.navigate(['../'], {relativeTo: this.activatedRoute}); // Pour passer de .../prestations/add à .../prestations
     });
   }
 }
