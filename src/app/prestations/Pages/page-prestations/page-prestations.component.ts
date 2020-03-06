@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { PrestationsService } from '../../services/prestations.service';
 import { Prestation } from 'src/app/shared/models/prestation';
-import { Observable, BehaviorSubject } from 'rxjs';
 import { State } from 'src/app/shared/enums/state.enum';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'; // Import de l'icône poubelle depuis FontAwesome
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-page-prestations',
@@ -28,7 +28,7 @@ export class PagePrestationsComponent implements OnInit {
   public externalLink: string;
   public faTrashAlt = faTrashAlt;
 
-  constructor(private ps: PrestationsService, private activatedRoute: ActivatedRoute) { }
+  constructor(private ps: PrestationsService, private activatedRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     // Pour l'observable froid :
@@ -64,5 +64,9 @@ export class PagePrestationsComponent implements OnInit {
         this.collection$.next(datas);
       });
     });
+  }
+
+  public editPrestation(item: Prestation) {
+    this.router.navigate(['prestations/edit', item.id]);
   }
 }

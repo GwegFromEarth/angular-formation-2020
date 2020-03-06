@@ -55,5 +55,7 @@ export class PrestationsService {
   }
 
   // Get item by id from collection
-
+  public getItemById(id: string) {
+    return this.http.get<Prestation>(`${environment.urlApi}prestations/${id}`);
+  }
 }
