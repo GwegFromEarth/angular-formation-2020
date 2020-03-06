@@ -50,7 +50,9 @@ export class PrestationsService {
   }
 
   // Delete item in collection
-
+  public deletePrestation(prestation: Prestation): Observable<Prestation> {
+    return this.http.delete<Prestation>(`${environment.urlApi}prestations/${prestation.id}`);
+  }
 
   // Get item by id from collection
 
